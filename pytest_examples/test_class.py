@@ -61,6 +61,39 @@ class TestMultiple:
 
 
 
+class TestDivide:
+    def test_divide_string(self):
+        instance = ClassToTest()
+        with pytest.raises(TypeError):
+            instance.divide("5", "6")
+
+    def test_divide_int(self):
+        instance = ClassToTest()
+        with pytest.raises(TypeError):
+            instance.divide(5, 6)
+
+    def test_divide_array(self):
+        instance = ClassToTest()
+        with pytest.raises(TypeError):
+            instance.divide([1, 6, 7], [6, 7, 8])
+
+    def test_divide_int(self):
+        instance = ClassToTest()
+        assert instance.divide(4, 2) == 2
+        assert instance.divide(10, 2) == 5
+        assert instance.divide(6, 2) == 3
+
+
+
+    def test_divide_floats(self):
+        instance = ClassToTest()
+        assert instance.multiply(0.0, 1.5) == pytest.approx(0)
+
+    def test_divide_floats_and_int(self):
+        instance = ClassToTest()
+        assert instance.multiply(1, 2.1) == pytest.approx(2.1)
+
+
 
 
 
