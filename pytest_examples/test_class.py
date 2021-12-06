@@ -69,11 +69,6 @@ class TestDivide:
         with pytest.raises(TypeError):
             instance.divide("5", "6")
 
-    def test_divide_int(self):
-        instance = ClassToTest()
-        with pytest.raises(TypeError):
-            instance.divide(5, 6)
-
     def test_divide_array(self):
         instance = ClassToTest()
         with pytest.raises(TypeError):
@@ -86,8 +81,8 @@ class TestDivide:
         assert instance.divide(6, 2) == 3
         assert instance.divide(0, 10) == 0
         assert instance.divide(-2, 10) == -0.2
-
-
+        with pytest.raises(TypeError):
+             instance.divide(0, 5)
 
     def test_divide_floats(self):
         instance = ClassToTest()
