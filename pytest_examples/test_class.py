@@ -86,7 +86,7 @@ class TestDivide:
 
     def test_divide_floats(self):
         instance = ClassToTest()
-        assert instance.multiply(0.0, 1.5) == pytest.approx(0)
+        assert instance.divide(0.0, 1.5) == pytest.approx(0)
 
     def test_divide_floats_and_int(self):
         instance = ClassToTest()
