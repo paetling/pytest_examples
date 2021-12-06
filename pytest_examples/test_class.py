@@ -47,10 +47,12 @@ class TestMultiple:
         assert instance.multiply(2, 3) == 6
         assert instance.multiply(3, 3) == 9
         assert instance.multiply(6, 2) == 12
+        assert instance.multiply(-1, 3) == -3
+        assert instance.multiply(0, 3) == 0
+        assert instance.multiply(-3, -4) == 12 
 
     def test_multiple_floats(self):
         instance = ClassToTest()
-        instance.multiply(2.1, 3.2) 
         assert instance.multiply(1.2, 2.1) == pytest.approx(2.52)
         assert instance.multiply(-1.1, 2.1) == pytest.approx(-2.31)
         assert instance.multiply(0.0, 1.5) == pytest.approx(0)
@@ -82,6 +84,8 @@ class TestDivide:
         assert instance.divide(4, 2) == 2
         assert instance.divide(10, 2) == 5
         assert instance.divide(6, 2) == 3
+        assert instance.divide(0, 10) == 0
+        assert instance.divide(-2, 10) == -0.2
 
 
 
@@ -92,9 +96,3 @@ class TestDivide:
     def test_divide_floats_and_int(self):
         instance = ClassToTest()
         assert instance.multiply(1, 2.1) == pytest.approx(2.1)
-
-
-
-
-
-
