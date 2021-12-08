@@ -72,7 +72,7 @@ class TestDivide:
         assert anyFit.divide(0, 10) == 0
         assert anyFit.divide(-2, 10) == -0.2
         with pytest.raises(ZeroDivisionError):
-             anyFit.divide(5, 0)
+             anyFit.divide(6, 0)
 
     def test_divide_floats(self, anyFit):
         assert anyFit.divide(0.0, 1.5) == pytest.approx(0)
