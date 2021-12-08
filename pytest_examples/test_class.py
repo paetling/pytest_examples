@@ -3,7 +3,7 @@ import pytest
 from pytest_examples.class_to_test import ClassToTest
 
 @pytest.fixture
-def anyFit():
+def any_fit():
     return ClassToTest()
 
 class TestAdd:
@@ -81,6 +81,3 @@ class TestDivide:
         assert anyFit.multiply(1, 2.1) == pytest.approx(2.1)
 
 
-
-class TestGetCurTime:
-    def    
