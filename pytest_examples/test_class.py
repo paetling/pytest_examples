@@ -2,48 +2,50 @@ import pytest
 
 from pytest_examples.class_to_test import ClassToTest
 
-from freezegun import freeze_time
+from datetime import datetime
 
-import datetime
+import os 
 
 @pytest.fixture
 def any_fit():
     return ClassToTest()
 
 
-@freeze_time("2021-12-09")
-class TestGetCurrent(ClassToTest):
-    def test_current_time(self):
-        assert datetime.datetime.now() == datetime.datetime(2021, 12, 9)
+class TestGetCurrent:
+    def test_current_time(self, any_fit, freezer):
+        now = datetime.now()
+        freezer.move_to('2021-12-05')
+        later = datetime.now()
+        assert any_fit.get_current_time() == datetime(2021, 12, 5)
+        # made a number of diffrent test to test diffrent outcomes
+        
+        
 
 
+class TestGetApiData:
+    pass
 
 class TestAdd:
-    def test_add_strings(self):
-        instance = ClassToTest()
+    def test_add_strings(self, any_fit):
         with pytest.raises(TypeError):
-            instance.add("1", "2")
+            any_fit.add("1", "2")
 
-    def test_add_arrays(self):
-        instance = ClassToTest()
+    def test_add_arrays(self, any_fit):
         with pytest.raises(TypeError):
-            instance.add([1,2,3], 1)
+            any_fit.add([1,2,3], 1)
 
-    def test_add_ints(self):
-        instance = ClassToTest()
-        assert instance.add(1, 2) == 3
-        assert instance.add(-1, 2) == 1
-        assert instance.add(0, 0) == 0
+    def test_add_ints(self, any_fit):
+        assert any_fit.add(1, 2) == 3
+        assert any_fit.add(-1, 2) == 1
+        assert any_fit.add(0, 0) == 0
 
-    def test_add_floats(self):
-        instance = ClassToTest()
-        assert instance.add(1.2, 2.1) == pytest.approx(3.3)
-        assert instance.add(-1.1, 2.1) == pytest.approx(1)
-        assert instance.add(0.0, 1.5) == pytest.approx(1.5)
+    def test_add_floats(self, any_fit):
+        assert any_fit.add(1.2, 2.1) == pytest.approx(3.3)
+        assert any_fit.add(-1.1, 2.1) == pytest.approx(1)
+        assert any_fit.add(0.0, 1.5) == pytest.approx(1.5)
 
-    def test_add_floats_and_int(self):
-        instance = ClassToTest()
-        assert instance.add(1, 2.1) == pytest.approx(3.1)
+    def test_add_floats_and_int(self, any_fit):
+        assert any_fit.add(1, 2.1) == pytest.approx(3.1)
 
 
 class TestMultiple:
