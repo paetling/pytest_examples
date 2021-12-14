@@ -15,15 +15,32 @@ class TestGetCurrent:
     def test_current_time(self, any_fit, freezer):
         now = datetime.now()
         freezer.move_to('2021-12-05')
+        # freezer.move_to('2021-12-12')
+        # freezer.move_to('2021-12-16')
+        # freezer.move_to('2021-12-11')
         later = datetime.now()
         assert any_fit.get_current_time() == datetime(2021, 12, 5)
+        # assert any_fit.get_current_time() == datetime(2021, 12, 12)
+        # assert any_fit.get_current_time() == datetime(2021, 12, 16)
+        # assert any_fit.get_current_time() == datetime(2021, 12, 11)
+
+
+
         # made a number of diffrent test to test diffrent outcomes
         
         
 
 
 class TestGetApiData:
-    pass
+    @staticmethod
+    def rm(filename):
+        os.remove(filename)
+
+    def test_get_api_data(self, mocker): 
+        mocker.patch('os.remove')  
+        TestGetApiData.rm('file')
+        os.remove.assert_called_once_with('file')
+
 
 class TestAdd:
     def test_add_strings(self, any_fit):
