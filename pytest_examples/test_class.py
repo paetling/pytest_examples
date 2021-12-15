@@ -13,33 +13,107 @@ def any_fit():
 
 class TestGetCurrent:
     def test_current_time(self, any_fit, freezer):
-        now = datetime.now()
-        freezer.move_to('2021-12-05')
-        # freezer.move_to('2021-12-12')
-        # freezer.move_to('2021-12-16')
-        # freezer.move_to('2021-12-11')
-        later = datetime.now()
-        assert any_fit.get_current_time() == datetime(2021, 12, 5)
-        # assert any_fit.get_current_time() == datetime(2021, 12, 12)
-        # assert any_fit.get_current_time() == datetime(2021, 12, 16)
-        # assert any_fit.get_current_time() == datetime(2021, 12, 11)
+        freezer.move_to('2021-12-15')
+        assert any_fit.get_current_time() == datetime(2021, 12, 15)
 
+        freezer.move_to('2021-12-12')
+        assert any_fit.get_current_time() == datetime(2021, 12, 12)
 
+        freezer.move_to('2021-12-16')
+        assert any_fit.get_current_time() == datetime(2021, 12, 16)
 
-        # made a number of diffrent test to test diffrent outcomes
+        freezer.move_to('2021-12-11')
+        assert any_fit.get_current_time() == datetime(2021, 12, 11)
+
         
         
+
+# get_api_data
+#  mock_remove = mocker.patch('pytest_examples.test_class.TestGetApiData.test_method') 
+
+
+    # def test_method(self):
+    #     pass
+
+
+    # def test_get_api_data(self, mocker, any_fit): 
+    #     mock_remove = mocker.patch('pytest_examples.class_to_test.ClassToTest.get_api_data')  
+    #     mock_remove.return_value = "response_1"
+
+    #     assert any_fit.get_api_data() == "response"
+
+
+
+car = "jeep"
+
+def test_car(mocker):
+    mock_remove = mocker.patch('pytest_examples.test_class.car', "yes")
+    print(car)
+
+    assert car == "yes"
+
 
 
 class TestGetApiData:
-    @staticmethod
-    def rm(filename):
-        os.remove(filename)
+    def test_get_request(self, mocker, any_fit): 
+        mock_remove = mocker.patch('pytest_examples.class_to_test.requests.get')  
+        mock_remove.return_value =  {
+          "number_of_requests_made": 1,
+          "time_since_last_request": 'yani',
+          "requests_left_this_hour": 4,
+          "requests_left_today": 5,
+        }
 
-    def test_get_api_data(self, mocker): 
-        mocker.patch('os.remove')  
-        TestGetApiData.rm('file')
-        os.remove.assert_called_once_with('file')
+        assert any_fit.get_api_data() == "This was your 1 request."
+
+        mock_remove.return_value =  {
+          "number_of_requests_made": 3,
+          "time_since_last_request": 'joe',
+          "requests_left_this_hour": 3,
+          "requests_left_today": 2,
+        }
+
+        assert any_fit.get_api_data() == "This was your 3 request."
+
+       
+        mock_remove.return_value =  {
+          "number_of_requests_made": "3",
+          "time_since_last_request": 'joe',
+          "requests_left_this_hour": 3,
+          "requests_left_today": 2,
+        }
+
+        assert any_fit.get_api_data() == "This was your 3 request."
+
+
+         
+        mock_remove.return_value =  {
+          "number_of_requests_made": 3.5,
+          "time_since_last_request": 'joe',
+          "requests_left_this_hour": 3,
+          "requests_left_today": 2,
+        }
+
+        assert any_fit.get_api_data() == "This was your 3.5 request."
+
+
+
+
+
+        assert any_fit.get_api_data() != 'yannick'
+
+        assert any_fit.get_api_data() !=  {
+          "number_of_requests_mde": 3,
+          "time_since_last_rquest": 'yp',
+          "requests_left_this_hour": 9,
+          "requests_lft_today": 4,
+        }
+        assert any_fit.get_api_data() == any_fit.get_api_data()
+    
+    # def test_get_api_data(self, any_fit):
+    #     assert any_fit.get_api_data() == self._transform_data("This was your <int> request. You have <int> left this hour and <int> left today.")
+
+    
 
 
 class TestAdd:
