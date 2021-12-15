@@ -39,3 +39,16 @@ class ClassToTest:
         return self._transform_data(response)
 
 
+    def get_the_maximum_value(self):
+        # The goal of the function is to grab a bunch of numbers from an endpoint and figure out the max number
+
+        # Response from the endpoint should look like:
+        # {
+        #   "number_1": <int>,
+        #   "number_2": <string>
+        #   "number_3": <int>,
+        #   "number_4": <int>,
+        #   "number_5": <int>,
+        # }
+        response = requests.get("https://get_number_data")
+        return max(response["number_1"], response["number_2"], response["number_3"], response["number_4"])

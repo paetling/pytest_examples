@@ -18,3 +18,7 @@ In this directory run `pytest pytest_examples`
 4. Create a custom pytest fixture that gives you a class instance so that you do not have to manually create it in all tests. Change one of your tests to use it. Make a PR.
 5. Add a class for testing the get_current_time method. Ensure you use the [pytest-freezegun](https://pypi.org/project/pytest-freezegun/). Make a PR.
 6. Add a class for testing get_api_data and fix any bugs. Ensure that you use [pytest-mock](https://github.com/pytest-dev/pytest-mock). Make a PR.
+7. Add a function for testing get_the_maximum_value and fix any bugs. Make a PR.
+    1. Write down for yourself what the function is trying to do
+    2. Write down what data or examples that would convince you it is working
+    3. Turn those examples into tests
