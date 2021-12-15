@@ -25,34 +25,6 @@ class TestGetCurrent:
         freezer.move_to('2021-12-11')
         assert any_fit.get_current_time() == datetime(2021, 12, 11)
 
-        
-        
-
-# get_api_data
-#  mock_remove = mocker.patch('pytest_examples.test_class.TestGetApiData.test_method') 
-
-
-    # def test_method(self):
-    #     pass
-
-
-    # def test_get_api_data(self, mocker, any_fit): 
-    #     mock_remove = mocker.patch('pytest_examples.class_to_test.ClassToTest.get_api_data')  
-    #     mock_remove.return_value = "response_1"
-
-    #     assert any_fit.get_api_data() == "response"
-
-
-
-car = "jeep"
-
-def test_car(mocker):
-    mock_remove = mocker.patch('pytest_examples.test_class.car', "yes")
-    print(car)
-
-    assert car == "yes"
-
-
 
 class TestGetApiData:
     def test_get_request(self, mocker, any_fit): 
@@ -95,23 +67,6 @@ class TestGetApiData:
         }
 
         assert any_fit.get_api_data() == "This was your 3.5 request."
-
-
-
-
-
-        assert any_fit.get_api_data() != 'yannick'
-
-        assert any_fit.get_api_data() !=  {
-          "number_of_requests_mde": 3,
-          "time_since_last_rquest": 'yp',
-          "requests_left_this_hour": 9,
-          "requests_lft_today": 4,
-        }
-        assert any_fit.get_api_data() == any_fit.get_api_data()
-    
-    # def test_get_api_data(self, any_fit):
-    #     assert any_fit.get_api_data() == self._transform_data("This was your <int> request. You have <int> left this hour and <int> left today.")
 
     
 
