@@ -149,45 +149,50 @@ class TestDivide:
 def test_get_max_value(mocker, any_fit):
     mock_remove = mocker.patch('pytest_examples.class_to_test.requests.get')  
     mock_remove.return_value = {
-          "number_1": 5,
-          "number_2": 7,
-          "number_3": 6,
-          "number_4": 5,
-          "number_5": 8,
-        }
-    assert any_fit.get_the_maximum_value() == 7
-
-    mock_remove.return_value = {
-          "number_1": 8,
-          "number_2": 9,
+          "number_1": 1,
+          "number_2": 2,
           "number_3": 3,
-          "number_4": 10,
-          "number_5": 22,
+          "number_4": 4,
+          "number_5": 5,
         }
+    assert any_fit.get_the_maximum_value() == 5    
     
-    assert any_fit.get_the_maximum_value() == 10
+    mock_remove.return_value = {
+          "number_1": 1,
+          "number_2": 2,
+          "number_3": 3,
+          "number_4": 5,
+          "number_5": 4,
+        }
+    assert any_fit.get_the_maximum_value() == 5
 
     mock_remove.return_value = {
-          "number_1": 11,
-          "number_2": 30,
-          "number_3": 16,
-          "number_4": 12,
-          "number_5": 22,
+          "number_1": 1,
+          "number_2": 2,
+          "number_3": 5,
+          "number_4": 3,
+          "number_5": 4,
         }
+    assert any_fit.get_the_maximum_value() == 5
 
-    assert any_fit.get_the_maximum_value() == 30
+    mock_remove.return_value = {
+          "number_1": 1,
+          "number_2": 5,
+          "number_3": 2,
+          "number_4": 3,
+          "number_5": 4,
+        }
+    assert any_fit.get_the_maximum_value() == 5
 
 
     mock_remove.return_value = {
-          "number_1": 17,
-          "number_2": 4,
-          "number_3": 8,
-          "number_4": 20,
-          "number_5": 15,
+          "number_1": 5,
+          "number_2": 1,
+          "number_3": 2,
+          "number_4": 3,
+          "number_5": 4,
         }
-     
-    assert any_fit.get_the_maximum_value() == 20
+    assert any_fit.get_the_maximum_value() == 5
 
-    
 
 

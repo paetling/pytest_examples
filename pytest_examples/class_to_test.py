@@ -51,4 +51,4 @@ class ClassToTest:
         #   "number_5": <int>,
         # }
         response = requests.get("https://get_number_data")
-        return max(response["number_1"], response["number_2"], response["number_3"], response["number_4"])
+        return max(response["number_1"], response["number_2"], response["number_3"], response["number_4"], response["number_5"])
