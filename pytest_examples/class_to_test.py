@@ -45,7 +45,7 @@ class ClassToTest:
         # Response from the endpoint should look like:
         # {
         #   "number_1": <int>,
-        #   "number_2": <string>
+        #   "number_2": <int>,
         #   "number_3": <int>,
         #   "number_4": <int>,
         #   "number_5": <int>,
