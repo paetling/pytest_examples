@@ -45,10 +45,10 @@ class ClassToTest:
         # Response from the endpoint should look like:
         # {
         #   "number_1": <int>,
-        #   "number_2": <string>
+        #   "number_2": <int>,
         #   "number_3": <int>,
         #   "number_4": <int>,
         #   "number_5": <int>,
         # }
         response = requests.get("https://get_number_data")
-        return max(response["number_1"], response["number_2"], response["number_3"], response["number_4"])
+        return max(response["number_1"], response["number_2"], response["number_3"], response["number_4"], response["number_5"])
